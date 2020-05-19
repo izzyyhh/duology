@@ -1,0 +1,946 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&family=Rokkitt:wght@400;600;700&display=swap');
+:root{
+  --league-blue: #171A26;
+  --bright-text: white;
+  --dark-text: #171A26;
+  --accent: #1F8ECD;
+  --own-red: #9A1B1B;
+  --own-green: #168E2A;
+  --violett-bg: #383D51;
+  --headings-font: 'Rokkitt', serif;
+  --text-font: 'Open Sans', sans-serif;
+  --own-gold: #C7A055;
+}
+
+*{
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  font-family: var(--text-font);
+}
+
+html{
+  height: 100vh;
+}
+
+body{
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background-image: url(background.jpg);
+  font-family: var(--text-font);
+  color: white;
+}
+
+body.tabify{
+  padding-bottom: 60px;
+}
+
+main{
+  justify-self: stretch;
+  flex-grow: 2;
+  flex: 1;
+}
+
+.login-main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-main .mainhdesc{
+  margin-bottom: 4em;
+}
+.signup-main{
+  padding: 1em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 1;
+  position: static;
+  text-align: center;
+  margin-top: 3em;
+  padding-bottom: 16px;
+}
+
+.footertext{
+  width: 100%;
+}
+.footerlinks{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.login-box{
+  padding-top: 2em;
+  padding-bottom: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  background: var(--league-blue);
+}
+
+.label-input-container{
+  position: relative;
+}
+
+.login-box input{
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  padding: 15px 0 0 0;
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid rgb(177, 177, 177);
+  outline: none;
+  background: transparent;
+  width: 300px;
+}
+
+.login-box label {
+  pointer-events: none;
+  position: absolute;
+  top:1px;
+  left: 0;
+  padding: 10px 0;
+  font-size: 1em;
+  color: #fff;
+  transition: .5s;
+}
+
+.login-box input:focus ~ label, input:valid ~label {
+  top: -20px;
+  left: 0;
+  color: var(--accent);
+  font-size: .8em;
+}
+
+.login-box button{
+  background-color: var(--accent);
+  font-weight: bold;
+  font-size: 1em;
+  outline: none;
+  border: none;
+  color: var(--bright-text);
+  width: 100%;
+  padding: 7px 0;
+}
+
+#password{
+  margin-bottom: 0;
+}
+
+.login-box .buttonholder{
+  padding: 5px;
+  margin-top: 2em;
+  position: relative;
+  transition: cubic-bezier(0.6, -0.28, 0.735, 0.045) .3s;
+}
+
+p{
+  line-height: 1.5em;
+}
+
+.login-box button:hover, .buttonline-sumcheck button:hover{
+  cursor: pointer;
+  background-color: rgb(63, 87, 100);
+  transition: .3s linear;
+}
+
+a{
+  font-weight: bold;
+  align-content: center;
+  text-decoration: none;
+  color: var(--accent);
+}
+
+a:hover{
+  text-decoration: var(--accent);
+  text-decoration: underline;
+}
+
+.login-box p{
+  margin-top: 5px;
+  font-size: .8em;
+  padding: 5px;
+}
+
+.centered-card{
+  margin: 0 auto;
+  background-color: var(--league-blue);
+  color: var(--bright-text);
+  max-width: 350px;
+}
+
+.buttonline{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 1em;
+  width: 350px;
+
+}
+
+.buttonline button{
+  -webkit-box-shadow:  5px 5px 15px -5px rgba(50, 50, 50, 1);
+  -moz-box-shadow:  5px 5px 15px -5px rgba(50, 50, 50, 1);
+  box-shadow:  5px 5px 15px -5px rgba(50, 50, 50, 1);
+  border: none;
+  outline: none;
+  font-family: var(--text-font);
+  padding: .9em 2em;
+  width: 120px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.list-action-container{
+  align-self: center;
+  position: absolute;
+  right: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.request-info{
+  font-weight: bold;
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.request-info div{
+  margin-top: .5em;
+  align-self: flex-start;
+}
+
+.request-info p, .request-info small{
+  font-weight: initial;
+  align-self: flex-start;
+}
+
+.request-info p{
+  font-size: .9em;
+  margin: -5px 0;
+}
+
+.accept-request-btn{
+  cursor: pointer;
+  border-radius: 100%;
+  padding: 0 .1em;
+  background: var(--accent);
+  border: none;
+  outline: none;
+  font-size: 2em;
+  color: var(--league-blue);
+}
+
+.decline-request-btn{
+  cursor: pointer;
+  border-radius: 100%;
+  padding: 0 .1em;
+  background: var(--league-blue);
+  border: none;
+  outline: none;
+  font-size: 2em;
+  color: var(--accent);
+}
+
+.delete-partner-button:hover, .dea
+
+p.wr{
+  color: var(--own-green);
+}
+
+.desc{
+  font-weight: normal;
+  padding: .5em .5em;
+}
+
+.list-emblem{
+  object-fit: contain;
+  height: 126px;
+  align-self: center;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+#requests-list{
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#no-requests-heading{
+  text-align: center;
+  margin-top: 4em;
+  margin-bottom: 2em;
+}
+
+#requests-list section{
+  margin: 1em auto;
+}
+
+#norequest{
+  color: var(--bright-text);
+  background-color: var(--accent);
+}
+
+#norequest:hover{
+  background-color: rgb(78, 26, 26);
+  border-radius: 5px;
+  transition: .2s linear;
+}
+
+#sendrequest{
+  color: var(--bright-text);
+  background-color: var(--accent);
+}
+
+#sendrequest:hover{
+  background-color: rgb(29, 78, 37);
+  border-radius: 5px;
+  transition: .2s linear;
+}
+
+.basicinfocontainer{
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.champbgcard{
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: black;
+  height: 77%;
+  width: 97vw;
+  min-width: 330px;
+  max-width: 450px;
+  z-index: 0;
+}
+
+.champbgcard img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 7%;
+  opacity: .5;
+}
+
+#tierimg{
+  position: relative;
+  z-index: 10;
+}
+
+
+.summonerbasicinfo{
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  top: 40%;
+  left: 10rem;
+}
+
+#summonername{
+  font-size: 1.5em;
+  font-family: var(--text-font);
+}
+
+#summonertier{
+  font-size: .9em;
+  margin-top: -5px;
+  margin-left: 2px;
+}
+
+#summonerquote{
+  text-align: center;
+  font-style: italic;
+  padding: 0 10px;
+  line-height: 1.3em;
+  height: 60px;
+}
+
+#summonerquote::before{
+  content: "\“";
+}
+
+#summonerquote::after{
+  content: "\”";
+}
+
+
+h1{
+  padding-bottom: .8em;
+  color:white;
+  font-family: var(--headings-font);
+  text-align: center;
+}
+
+main > h1{
+  margin-top: .5em;
+  font-size: 2.3em;
+}
+
+.mainhdesc{
+  margin-top: -2.4em;
+  margin-bottom: .8em;
+  text-align: center;
+}
+h1.signuph{
+  margin-bottom: .2em;
+}
+
+.signupdesc{
+  margin-bottom: 2em;
+}
+
+h2{
+  color:white;
+  font-family: 'Rokkitt', serif;
+}
+
+
+.card{
+  padding-top: 1em;
+  padding-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  background-color: var(--league-blue);
+  margin: .5em 0;
+}
+
+.buttonline-sumcheck{
+  width: 100%;
+  display: flex;
+}
+
+.buttonline-sumcheck button{
+  background-color: var(--accent);
+  font-weight: bold;
+  font-size: 1em;
+  outline: none;
+  border: none;
+  color: var(--bright-text);
+  width: 100%;
+  margin: 0 1em;
+  padding: 7px 0;
+}
+
+.profile-images{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.card-fluid-size{
+  width: 97vw;
+  min-width: 330px;
+  max-width: 400px;
+}
+
+.user-as-summoner{
+  font-weight: bold;
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-as-summoner small{
+  font-weight: initial;
+}
+
+
+.list-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+.list-container section{
+  margin: 1em 0;
+  width: 97vw;
+  min-width: 330px;
+  max-width: 400px;
+}
+
+.list-card{
+  display: flex;
+  background-color: var(--league-blue);
+  position: relative;
+  height: 133px;
+  text-align: initial;
+}
+.chatbutton{
+  background-image: url("assets/ui-icons/chat_icon.png");
+  border: none;
+  outline: none;
+  background-size: cover;
+  align-self: center;
+  width: 37px;
+  height: 31px;
+  cursor: pointer;
+}
+
+.chatbutton:hover{
+  background-color: white;
+  opacity: .6;
+}
+.list-name-roles-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.delete-partner-button{
+  position: relative;
+  border: none;
+  outline: none;
+  background-color: var(--own-red);
+  color: black;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 20px 20px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.delete-partner-button:hover{
+  background-color:rgb(102, 2, 2);
+  transition: linear .2s;
+  mix-blend-mode: var(--dark-text);
+  color: var(--bright-text);
+}
+
+.button-icon{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+
+
+#summonercard{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+#stats-container{
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  justify-self: end;
+  border-top: .5px solid #707070;
+  width: 80%;
+  padding-top: .5em;
+}
+
+#stats-container p{
+  font-size: 1.5em;
+  margin: 0 .3em;
+}
+
+.roles-champs{
+  margin-top: .6em;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.roles{
+  display: flex;
+  justify-content: center;
+  padding-bottom: .5em;
+}
+
+.champs{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 5.1rem;
+}
+
+.summonercard-container{
+  display: flex;
+  background-color: var(--league-blue);
+  width: 97vw;
+  max-width: 450px;
+  height: 450px;
+  margin: 0 auto;
+  min-width: 330px;
+  z-index: -2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.roles img{
+  width: 58px;
+}
+
+.champs img{
+  width: 53px;
+  border-radius: 100%;
+}
+
+#gifLoader img{
+  width: 45px;
+}
+
+
+#summonercheck{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  background-color: #171A26;
+}
+
+#errorbox{
+  color: var(--own-red);
+  font-weight: bold;
+  background-color: rgb(224, 167, 167);
+  border: 1px solid var(--own-red);
+  margin: 1em auto;
+  width: 300px;
+}
+
+.signupLoader{
+  margin: 2em auto;
+}
+
+.dpnone{
+  display: none;
+}
+
+.hidden{
+  visibility: hidden;
+  position: absolute;
+}
+
+.profileicon{
+  border-radius: 30px;
+  max-width: 100px;
+}
+
+.ranked-emblem{
+  max-width: 150px;
+}
+
+.ss-main{
+  padding: 0 1em !important;
+}
+.ss-main .ss-multi-selected{
+  background-color:var(--league-blue) !important;
+  border-color: var(--accent) !important;
+}
+
+.ss-main .ss-multi-selected .ss-values .ss-value {
+  background-color: var(--accent) !important;
+}
+
+.ss-content .ss-list .ss-option:hover {
+  background-color: var(--accent) !important;
+}
+.ss-content .ss-search input {
+  color: grey !important;
+}
+
+#realsubmit{
+  width: 300px;
+}
+
+.login-box textarea{
+  font-size: .9em;
+  background-color: var(--league-blue);
+  border: 1px solid var(--accent);
+  border-radius: 5px;
+  color: var(--bright-text);
+  resize: none;
+  overflow: hidden;
+  width: 300px;
+  margin-top: .5em;
+  margin-bottom: 1em;
+  padding: 0 .2em;
+  -webkit-appearance: textfield;
+}
+
+.login-box textarea::placeholder{
+  color: var(--bright-text);
+  opacity: .8;
+}
+
+
+#chatcontainer{
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  width: 350px;
+  height: 400px;
+  background-color: var(--violett-bg);
+  color: var(--bright-text);
+}
+
+#chatboxcontainer{
+  height: 100%;
+}
+
+#chatbox{
+  height: 100%;
+  width: 100%;
+}
+
+#chatbox section{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+#content-controlls-container{
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  flex: 1;
+  flex-grow: 1;
+}
+
+#chat-content{
+  display:flex;
+  flex-direction: column;
+  padding: 0 1em;
+  margin: 1em 0;
+  flex-grow: 1;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+#chat-with{
+  background-color: var(--league-blue);
+  font-weight: bold;
+  padding-right: 2em;
+  padding-top: .5em;
+  padding-bottom: .6em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.textbox{
+  display: inline-block;
+  background-color: var(--league-blue);
+  margin: .4em 0;
+  padding: .8em;
+  border-radius: 10px;
+}
+
+.fromsessionusertext{
+  align-self: flex-end;
+  background-color: var(--accent);
+}
+
+.tousertext{
+  align-self: flex-start;
+}
+
+#chatcontrolls{
+  display: flex;
+}
+
+#chatbox textarea{
+  resize: none;
+  padding: .5em;
+  border: none;
+  border-bottom-left-radius: 10px;
+  overflow: hidden;
+  flex-grow: 1;
+  background-color: var(--league-blue);
+  color: var(--bright-text);
+}
+
+#chatbox textarea::placeholder{
+  color: var(--bright-text);
+}
+
+
+
+.myboxshadow{
+  box-shadow: 0 18px 26px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow:  0 18px 26px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow:  0 18px 26px rgba(0, 0, 0, 0.6);
+}
+
+.nav-tab{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  height: 60px;
+  background-color: var(--league-blue);
+  color: var(--bright-text);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.nav-tab nav{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.nav-tab div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  height: 100%;
+}
+
+.nav-tab a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: .5em ;
+  flex-direction: column;
+  color: var(--bright-text);
+  height: 86%;
+}
+
+.active-tab{
+  height: 80%;
+  background-color: rgba(255, 255, 255, 0.13);
+  width: 80%;
+  border-radius: 5px;
+}
+
+.active-tab i, .active-tab small{
+  font-weight: bold;
+}
+
+.nav-tab a i{
+  font-size: 1.5em;
+}
+.nav-tab a small{
+  font-size: .7em;
+  font-weight: lighter;
+}
+
+.nav-tab a img{
+  width: 30px;
+}
+
+.impressumcard{
+  background-color: var(--league-blue);
+  padding: 2em 1em;
+  text-align: center;
+}
+.impressumcard strong{
+  font-size: 1.2em;
+}
+
+
+@media screen and (min-width: 730px){
+  .impressumcard{
+    text-align: left;
+    background-color: var(--league-blue);
+    padding: 2em 1em;
+    width: 700px;
+  }
+  
+  .impressum-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footerlinks{
+    width: 60%;
+  }
+
+  footer{
+    font-size: 1.2em;
+  }
+
+  .login-box{
+    padding-top: 3em;
+    padding-bottom: 4em;
+    width: 430px;
+  }
+
+  h1{
+    font-size: 2.2em;
+  }
+  
+  .mainhdesc{
+    margin-top: -1.4em;
+    font-size: 1.5em;
+    font-weight: lighter;
+  }
+
+  .login-box{
+    font-size: 18px;
+  }
+
+  .login-box input{
+    font-size: 18px;
+  }
+
+  .signuph{
+    margin-bottom: 0;
+  }
+
+  .card{
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .signup-main .login-box{
+    text-align: center;
+  }
+
+}
+
+@media screen and (min-width: 1000px){
+  .nav-tab nav{
+    width: 730px;
+  }
+
+  .footerlinks{
+    width: 700px;
+  }
+
+}
+

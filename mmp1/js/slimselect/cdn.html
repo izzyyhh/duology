@@ -1,0 +1,32 @@
+<html>
+  <head>
+
+    <link href="slimselect.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <form action="cdn-post.php" method="post">
+    <select name="champions[]" id="multiple" multiple>
+      <option value="Nidalee">Nidalee</option>
+      <option value="Yasuo">Yasuo</option>
+      <option value="Graves">Graves</option>
+      <option value="Mundo">Mundo</option>
+    </select>
+    <button>submit</button>
+  </form>
+  <script>
+      setTimeout(function() {
+        new SlimSelect({
+          select: '#multiple',
+          limit: 3,
+          hideSelectedOption: true,
+          searchingText: "searching champion",
+          searchText: "no champion found",
+          searchPlaceholder: "search your champions",
+          placeholder: "select 3 favourite champions",
+          deselectLabel: "<span>XXX</span>",
+        })
+      }, 300)
+    </script>
+    <script src="slimselect.min.js"></script>
+  </body>
+</html>
