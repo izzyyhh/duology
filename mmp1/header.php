@@ -17,8 +17,7 @@ require_once "functions.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-WebKit-CSP" content="default-src 'self'; script-src 'self'">    <link rel="stylesheet" href="assets/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/style.css" type="text/css">
     <link rel="stylesheet" href="js/slimselect/slimselect.min.css" type="text/css">
     <link rel="stylesheet" href="assets/font-awesome/css/all.css" type="text/css">
     <title><?= $pagetitle ?></title>
