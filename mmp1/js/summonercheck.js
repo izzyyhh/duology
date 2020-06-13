@@ -5,7 +5,7 @@ Autor: Ismail Halili
 Email: ihalili.mmt-b2019@fh-salzburg.ac.at
 */
 
-window.addEventListener("load", ()=>{
+window.addEventListener("DOMContentLoaded", ()=>{
   const summonercheckForm = document.getElementById("summonercheck");
   const summonerLookup = document.querySelectorAll(".summonerlookup");
   const summonerInformation = document.getElementById("summonerinfo");

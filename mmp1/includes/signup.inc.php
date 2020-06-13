@@ -9,10 +9,15 @@ Email: ihalili.mmt-b2019@fh-salzburg.ac.at
 include "../functions.php";
 include "api.php";
 require "dbcon.php";
+require_once "../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php";
 
-    $username = trim(htmlspecialchars($_POST["username"]));
-    $password = trim(htmlspecialchars($_POST["password"]));
-    $repeatedpassword = trim(htmlspecialchars($_POST["repeatedpassword"]));
+    $config = HTMLPurifier_Config::createDefault();
+    $purifier = new HTMLPurifier($config);
+
+    $username = trim($purifier->purify($_POST["username"]));
+
+    $password = trim($_POST["password"]);
+    $repeatedpassword = trim($_POST["repeatedpassword"]);
 
     if(empty($username) || empty($password) || empty($repeatedpassword)){
       echo "not all fields filled";

@@ -6,9 +6,10 @@ Autor: Ismail Halili
 Email: ihalili.mmt-b2019@fh-salzburg.ac.at
 */
 
-require "functions.php";
 $pagetitle = "DUOLOGY Find your dream partner";
 require "header.php";
+require "includes/redirect-nonuser.php";
+
 ?>
 
 <form class="hidden" id="yesform" action="loadpartner.inc.php">

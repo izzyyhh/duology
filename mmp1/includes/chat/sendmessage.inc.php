@@ -8,10 +8,14 @@ Email: ihalili.mmt-b2019@fh-salzburg.ac.at
 
 require "../../functions.php";
 require "../dbcon.php";
+require_once "../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php";
+
+$config = HTMLPurifier_Config::createDefault();
+$purifier = new HTMLPurifier($config);
 
 $from = $_SESSION["user"];
 $to = $_POST["to"];
-$message = trim(htmlspecialchars($_POST["message"]));
+$message = trim($purifier->purify($_POST["message"]));
 
 
 $insertStmt = "INSERT INTO chat_messages (from_user, to_user, message) VALUES (?, ?, ?)";

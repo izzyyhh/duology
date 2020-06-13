@@ -6,10 +6,10 @@ Autor: Ismail Halili
 Email: ihalili.mmt-b2019@fh-salzburg.ac.at
 */
 
-require "functions.php";
 $pagetitle ="DUOLOGY My duo partners";
 require "includes/dbcon.php";
 require "header.php";
+require "includes/redirect-nonuser.php";
 
 $partnersQuery =   "SELECT * FROM duo_partners
                     WHERE  user1 = ? OR user2 = ?";
@@ -27,9 +27,9 @@ if($result = $partnersHandle->fetchAll()){
     foreach($result as $partner){
 
         if($partner->user1 != $_SESSION["user"]){
-            $myPartner = $partner->user1;
+            $myPartner = htmlspecialchars($partner->user1);
         } else{
-            $myPartner = $partner->user2;
+            $myPartner = htmlspecialchars($partner->user2);
         }
 
         #get summoner of partners and display somehing
@@ -85,11 +85,10 @@ echo "</main>";
                 <div id="chat-with"> <button id="removechat" style="cursor:pointer; border:none; background-color: #171A26; color: #1F8ECD; font-size: 2em; padding: 0 .3em;"><i class="fas fa-times-circle"></i></button><p>Chat with <span style="font-size: 1.2em; color: #1F8ECD;">user</span></p></div>
                     <div id="content-controlls-container">
                         <div id="chat-content">
-                            <p class="fromsessionusertext textbox">hello there</p>
-                            <p class="tousertext textbox">okeyyy</p>
 
                         </div>
                         <form id="chatcontrolls">
+                            <label class="hidden" for="chatmessage">Your message</label>
                             <textarea placeholder="type in your message ..." name="chatmessage" id="chatmessage" cols="30" rows="3"></textarea>
                             <button id="sendmessage" style="cursor:pointer; border:none; background-color: #171A26; color: #1F8ECD; font-size: 2em; padding: 0 .3em;"><i class="fas fa-arrow-alt-circle-right"></i></button>
                         </form>

@@ -6,10 +6,10 @@ Autor: Ismail Halili
 Email: ihalili.mmt-b2019@fh-salzburg.ac.at
 */
 
-require "functions.php";
 $pagetitle = "DUOLOGY Your requests";
 require "includes/dbcon.php";
 require "header.php";
+require "includes/redirect-nonuser.php";
 
 $requestsQuery =   "SELECT * FROM duo_requests
                     JOIN users

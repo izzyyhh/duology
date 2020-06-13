@@ -5,7 +5,7 @@ Autor: Ismail Halili
 Email: ihalili.mmt-b2019@fh-salzburg.ac.at
 */
 
-window.addEventListener("load", () =>{
+window.addEventListener("DOMContentLoaded", () =>{
     const chatButtons = document.querySelectorAll(".startchat");
     const removeChatButton = document.getElementById("removechat");
     const sendMessageButton = document.getElementById("sendmessage");

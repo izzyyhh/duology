@@ -6,9 +6,10 @@ Autor: Ismail Halili
 Email: ihalili.mmt-b2019@fh-salzburg.ac.at
 */
 
-include "functions.php";
 $pagetitle = "DUOLOGY Sign up";
 include "header.php";
+if(!isset($_SESSION["user"])) header("Location: index.php");
+
  ?>
     <main class='signup-main'>
       <div>
@@ -26,6 +27,7 @@ include "header.php";
                   <input type="hidden" name="username" value="<?php echo $_SESSION["user"]?>">
                     <div id ="roles-champs-select" class="card">
                         <h3 class="desc">Select 2 main roles</h3>
+                        <label class="hidden" for="multiple-roles">Your roles</label>
                         <select name="roles[]" id="multiple-roles" multiple>
                             <option value="Top">Top</option>
                             <option value="Mid">Mid</option>
@@ -34,6 +36,7 @@ include "header.php";
                             <option value="Support">Support</option>
                         </select>
                         <h3 class="desc">Select 3 favourite champions</h3>
+                        <label class="hidden" for="multiple-champions">Your champions</label>
                         <select name="champions[]" id="multiple-champions" multiple>
                             <option value="Aatrox">Aatrox</option>
                             <option value="Ahri">Ahri</option>
@@ -181,6 +184,7 @@ include "header.php";
 
                         </select>
                         <h3 class="desc">Your quote, seen by other users</h3>
+                        <label class="hidden" for="summonerquote-signup">Your quote</label>
                         <textarea maxlength="137" name="summonerquote" id="summonerquote-signup" cols="30" rows="4" placeholder="Hello there it's me, I'm lookin' for ..."></textarea>
                     <button id="realsubmit">Submit</button>
                   </div>
@@ -201,33 +205,8 @@ include "header.php";
 
       <script src="js/summonercheck.js"></script>
       <script src="js/slimselect/slimselect.min.js"></script>
-      <script>
-        setTimeout(function() {
-          new SlimSelect({
-            select: '#multiple-roles',
-            limit: 2,
-            hideSelectedOption: true,
-            searchingText: "searching role",
-            searchText: "no role found",
-            searchPlaceholder: "search you role",
-            placeholder: "select roles",
-            deselectLabel: "<span>XXX</span>",
-          })
-        }, 300);
+      <script src="js/signup-selection.js"></script>
 
-        setTimeout(function() {
-          new SlimSelect({
-            select: '#multiple-champions',
-            limit: 3,
-            hideSelectedOption: true,
-            searchingText: "searching champion",
-            searchText: "no champion found",
-            searchPlaceholder: "search your champions",
-            placeholder: "select champions",
-            deselectLabel: "<span>XXX</span>",
-          })
-        }, 300);
-      </script>
 <?php
 include "footer.php";
 ?>

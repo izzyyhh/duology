@@ -9,6 +9,13 @@ Email: ihalili.mmt-b2019@fh-salzburg.ac.at
 include "functions.php";
 $pagetitle = "DUOLOGY Sign Up";
 include "header.php";
+
+if(isset($_SESSION["user"]) && userHasSummoner($dbh)) {
+  header("Location: main.php");
+} else if(isset($_SESSION["user"])){
+  header("Location: summonercheck.php");
+}
+
 ?>
 <main class="signup-main">
   <h1>Welcome summoner!</h1>

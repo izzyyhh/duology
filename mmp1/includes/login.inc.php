@@ -27,16 +27,17 @@ $password = $_POST["password"];
 
     if($result = $checkUsernameSth->fetch()){
       if(password_verify($password, $result->password)){
-        session_start();
-        $_SESSION["user"] = $result->username;
 
-        #check if got summoner if not send to summonercheck.php
-        $summonercheckQuery = "SELECT summoner FROM users WHERE username = ? AND summoner IS NOT NULL";
-        $checkHandle = $dbh->prepare($summonercheckQuery);
-        $checkHandle->execute(array($_SESSION["user"]));
+        session_start();
+        session_regenerate_id(true);
         
-        if($checkHandle->fetch()){
-          $_SESSION["signedup"] = true;
+        //session_destroy();
+        //unset($_SESSION);
+        //session_start();
+
+        $_SESSION["user"] = $result->username;
+        
+        if(userHasSummoner($dbh)){
           header("Location: ../main.php");
         } else{
           header("Location: ../summonercheck.php");
@@ -45,15 +46,15 @@ $password = $_POST["password"];
         exit();
 
       } else{
-        $_SESSION["message"] = "your password is incorrect";
+        $_SESSION["message"] = "Login invalid";
 
         header("Location: ../index.php?username=" . urlencode($username));
         exit();
       }
     } else{
-      $_SESSION["message"] = "this user does not exist";
+      $_SESSION["message"] = "Login invalid";
       
-      header("Location: ../index.php?user=404");
+      header("Location: ../index.php");
     }
   }
 }

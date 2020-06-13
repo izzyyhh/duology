@@ -6,7 +6,6 @@ Autor: Ismail Halili
 Email: ihalili.mmt-b2019@fh-salzburg.ac.at
 */
 
-include "functions.php";
 $pagetitle = "DUOLOGY Login";
 include "header.php";
 
@@ -39,21 +38,13 @@ if(!isset($_SESSION["user"])){
     </div>
   </div>
 </main>
-
 <?php
 } else{
-  #back click handle
-
-  $summonercheckQuery = "SELECT summoner FROM users WHERE username = ? AND summoner IS NOT NULL";
-  $checkHandle = $dbh->prepare($summonercheckQuery);
-  $checkHandle->execute(array($_SESSION["user"]));
-
-  if($checkHandle->fetch()){
+  if(userHasSummoner($dbh)){
     header("Location: main.php");
-  }else{
+  } else{
     header("Location: summonercheck.php");
   }
-  
 }
 
 include "footer.php";

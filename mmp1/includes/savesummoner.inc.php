@@ -10,12 +10,16 @@ include "../functions.php";
 require "dbcon.php";
 require "api.php";
 require "summoner.php";
+require_once "../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php";
+
+$config = HTMLPurifier_Config::createDefault();
+$purifier = new HTMLPurifier($config);
 #take champions[] und roles[] safe them und handle wenn kleiner als 3 und 2 am besten mit js
 
 
 if(isset($_POST["summonername"]) && isset($_POST["username"])){
-    $summonername = trim(htmlspecialchars($_POST["summonername"]));
-    $username = trim(htmlspecialchars($_POST["username"]));
+    $summonername = trim($purifier->purify($_POST["summonername"]));
+    $username = trim($purifier->purify($_POST["username"]));
 
     $summoner = new Summoner($summonername);
     #var_dump($summoner->rank);
@@ -28,23 +32,31 @@ if(isset($_POST["summonername"]) && isset($_POST["username"])){
         $insertStmt = "INSERT INTO summoners (name, level, tier, rank, wins, losses, lp, role1, role2, favchamp1, favchamp2, favchamp3, quote) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $ih = $dbh->prepare($insertStmt);
 
-        $ih->execute(array($summoner->name, $summoner->lvl, $summoner->tier, $summoner->rank, $summoner->wins, $summoner->losses, $summoner->lp, $_POST["roles"][0], $_POST["roles"][1], $_POST["champions"][0], $_POST["champions"][1], $_POST["champions"][2], trim(htmlspecialchars($_POST["summonerquote"]))));
+        $ih->execute(array($summoner->name, $summoner->lvl, $summoner->tier, $summoner->rank, $summoner->wins, $summoner->losses, $summoner->lp, $_POST["roles"][0], $_POST["roles"][1], $_POST["champions"][0], $_POST["champions"][1], $_POST["champions"][2], trim($purifier->purify($_POST["summonerquote"]))));
     }
 
         
-        $alreadyExistsQuery = "SELECT * FROM users WHERE summoner = ?";
-        $alrSth = $dbh->prepare($alreadyExistsQuery);
-        $alrSth->execute(array($summoner->name));
+    $alreadyExistsQuery = "SELECT * FROM users WHERE summoner = ?";
+    $alrSth = $dbh->prepare($alreadyExistsQuery);
+    $alrSth->execute(array($summoner->name));
 
-        if(!$alrSth->fetch()){
+    if(!$alrSth->fetch()){
+        try{
             $updateStmt = "UPDATE users SET summoner = ? WHERE username = ?";
+            $dbh->beginTransaction();
+
             $uh = $dbh->prepare($updateStmt);
-            if($uh->execute(array($summoner->name, $username))){
-                echo "success";
-            }
+            $uh->execute(array($summoner->name, $username));
+    
+            $dbh->commit();
+
+            echo "success";
+
+        } catch(Exception $e){
+            $dbh->rollBack();
+            echo "Error: " . $e->getMessage();
         }
-    
-    
+    }   
 }
 
 ?>

@@ -9,6 +9,7 @@ Email: ihalili.mmt-b2019@fh-salzburg.ac.at
 include "functions.php";
 $pagetitle = "DUOLOGY Impressum";
 include "header.php";
+
 ?>
 <main class="impressum-main">
 <h1>IMPRESSUM</h1>

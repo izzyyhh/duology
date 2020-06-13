@@ -6,7 +6,7 @@ Email: ihalili.mmt-b2019@fh-salzburg.ac.at
 */
 
 
-window.addEventListener("load", ()=>{
+window.addEventListener("DOMContentLoaded", ()=>{
     const tabNavigation = document.getElementById("tab-navigation");
 
     let currentPath = window.location.pathname;

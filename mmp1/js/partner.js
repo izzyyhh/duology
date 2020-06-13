@@ -6,7 +6,7 @@ Email: ihalili.mmt-b2019@fh-salzburg.ac.at
 */
 
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
     const mainSection = document.querySelector(".summonercard-container");
     const yesButton = document.getElementById("sendrequest");
     const noButton = document.getElementById("norequest");

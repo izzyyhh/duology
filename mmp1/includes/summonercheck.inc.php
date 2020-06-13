@@ -31,14 +31,14 @@ if(RiotGamesAPI::$httpStatusCode != 404){
       <h2>Is this you, Summoner?</h2>
       <br/>
 
-      <h3>". $summoner->name . "</h3>
-      <p>Level " . $summoner->lvl. "</p>
-      <p> " . $rankInfo ."</p>
+      <h3>". htmlspecialchars($summoner->name) . "</h3>
+      <p>Level " .  htmlspecialchars($summoner->lvl). "</p>
+      <p> " .  htmlspecialchars($rankInfo) ."</p>
       <div class='summonerdetails'>
 
         <div class='profile-images'>
-          <img class = 'profileicon' src='https://ddragon.leagueoflegends.com/cdn/10.8.1/img/profileicon/".$summoner->profileIconId.".png' alt='profileicon'>
-          <img class = 'ranked-emblem' src='ranked-emblems/Emblem_".$summoner->tier.".png' alt='ranked emblem'>
+          <img class = 'profileicon' src='https://ddragon.leagueoflegends.com/cdn/10.8.1/img/profileicon/". htmlspecialchars($summoner->profileIconId).".png' alt='profileicon'>
+          <img class = 'ranked-emblem' src='ranked-emblems/Emblem_". htmlspecialchars($summoner->tier).".png' alt='ranked emblem'>
         </div>
 
 

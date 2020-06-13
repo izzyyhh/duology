@@ -21,9 +21,9 @@ $printableMessages = "";
 
 foreach($allMessages as $message){
     if($message->from_user == $sessionUser){
-        $printableMessages .= ("<p class='fromsessionusertext textbox'>" . $message->message . "</p>");
+        $printableMessages .= ("<p class='fromsessionusertext textbox'>" . htmlspecialchars($message->message) . "</p>");
     } else{
-        $printableMessages.= ("<p class='tousertext textbox'>" . $message->message . "</p>");
+        $printableMessages.= ("<p class='tousertext textbox'>" . htmlspecialchars($message->message) . "</p>");
     }
 }
 
